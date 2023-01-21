@@ -1,5 +1,6 @@
 # DOCKER DB
-``` docker run --name postgres12golang -p 5432:5432 -e POSTGRES_USER=root -e POSTGRES_PASSWORD=secret -d postgres:13 
+``` 
+docker run --name postgres12golang -p 5432:5432 -e POSTGRES_USER=root -e POSTGRES_PASSWORD=secret -d postgres:13 
 ```
 # CONNECT TO DB
 ```
@@ -10,7 +11,7 @@ docker exec -it postgres12golang psql -U root
 ```
 migrate create -ext sql -dir [folder] -seq [schema name]
 ```
-## EXAMPLE
+### EXAMPLE
 ```
 migrate create -ext sql -dir db/migration -seq init_schema
 ```
@@ -28,3 +29,7 @@ migrate -path db/migration -database "postgresql://root:secret@localhost:5432/si
 # SQLC
 USES 
 - ```sqlc generate``` - generate a new sqlc
+
+# CREATE OUR MODULE
+`go mod [github project url]`
+install dependencies `go mod tidy`
