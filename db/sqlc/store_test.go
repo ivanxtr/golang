@@ -64,7 +64,7 @@ func TestTransferTx(t *testing.T) {
 		require.NotZero(t, fromEntry.ID)
 		require.NotZero(t, fromEntry.CreatedAt)
 
-		_, err = store.GetEntry(context.Background(), fromEntry.ID)
+		_, err = store.GetEntries(context.Background(), fromEntry.ID)
 		require.NoError(t, err)
 
 		// check entries
@@ -75,7 +75,7 @@ func TestTransferTx(t *testing.T) {
 		require.NotZero(t, toEntry.ID)
 		require.NotZero(t, toEntry.CreatedAt)
 
-		_, err = store.GetEntry(context.Background(), toEntry.ID)
+		_, err = store.GetEntries(context.Background(), toEntry.ID)
 		require.NoError(t, err)
 
 		// check accounts
