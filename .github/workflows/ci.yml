@@ -7,10 +7,24 @@ on:
     branches: [ "main" ]
 
 jobs:
-
+  
   test:
     name: Test
     runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres
+        env:
+          POSTGRES_USER: root
+          POSTGRES_PASSWORD: secret
+          POSTGRES_DB: simple_bank
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
     steps:
     - name: Set up Go
       uses: actions/setup-go@v4
@@ -19,6 +33,9 @@ jobs:
     
     - name: Check out code into th Go module directory
       uses: actions/checkout@v4
+    
+    - name: Run migrations
+      run: make migrateup
 
     - name: Test
       run: make test
