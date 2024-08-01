@@ -24,7 +24,7 @@ migrate -path db/migration -database "postgresql://[USERNAME]:[PASSWORD@localhos
 ### EXAMPLE
 ```
 migrate -path db/migration -database "postgresql://root:secret@localhost:5432/simple_bank?sslmode=disable" -verbose up
-```
+``
 
 # SQLC
 USES 
